@@ -341,6 +341,15 @@ void WLED::beginStrip()
 #endif
 #endif
 
+#ifdef RCSW
+  mySwitch = RCSwitch();
+  pinManager.allocatePin(RCPIN);
+  mySwitch.enableTransmit(RCPIN);
+  mySwitch.setProtocol(RCPROTO);
+  mySwitch.setPulseLength(RCLEN);
+  mySwitch.setRepeatTransmit(RCRPT);
+#endif
+
   // disable button if it is "pressed" unintentionally
 #if (defined(BTNPIN) && BTNPIN > -1) || defined(TOUCHPIN)
   if (isButtonPressed())

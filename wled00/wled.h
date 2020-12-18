@@ -141,6 +141,10 @@
   #include <IRutils.h>
 #endif
 
+#ifdef RCSW
+  #include <RCSwitch.h>
+#endif
+
 //Filesystem to use for preset and config files. SPIFFS or LittleFS on ESP8266, SPIFFS only on ESP32 (now using LITTLEFS port by lorol)
 #ifdef ESP8266
   #define WLED_FS LittleFS
@@ -328,6 +332,10 @@ WLED_GLOBAL uint16_t userVar0 _INIT(0), userVar1 _INIT(0); //available for use i
   WLED_GLOBAL uint16_t DMXGap _INIT(10);          // gap between the fixtures. makes addressing easier because you don't have to memorize odd numbers when climbing up onto a rig.
   WLED_GLOBAL uint16_t DMXStart _INIT(10);        // start address of the first fixture
   WLED_GLOBAL uint16_t DMXStartLED _INIT(0);      // LED from which DMX fixtures start
+#endif
+
+#ifdef RCSW
+  WLED_GLOBAL RCSwitch mySwitch;
 #endif
 
 // internal global variable declarations

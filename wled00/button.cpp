@@ -91,6 +91,9 @@ void handleIO()
       #if RLYPIN >= 0
        digitalWrite(RLYPIN, RLYMDE);
       #endif
+      #ifdef RCSW
+      mySwitch.send(RCON, RCBITS);
+      #endif
       offMode = false;
     }
   } else if (millis() - lastOnTime > 600)
@@ -102,6 +105,9 @@ void handleIO()
       #endif
       #if RLYPIN >= 0
        digitalWrite(RLYPIN, !RLYMDE);
+      #endif
+      #ifdef RCSW
+      mySwitch.send(RCOFF, RCBITS);
       #endif
      }
     offMode = true;
